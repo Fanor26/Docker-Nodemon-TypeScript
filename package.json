@@ -1,0 +1,27 @@
+{
+  "name": "docker-nodemon-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon --config nodemon.json src/server.ts",
+    "dev:debug": "nodemon --config nodemon.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fanor1924/Docker-Nodemon-TypeScript.git"
+  },
+  "keywords": [],
+  "author": "Fanor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fanor1924/Docker-Nodemon-TypeScript/issues"
+  },
+  "homepage": "https://github.com/Fanor1924/Docker-Nodemon-TypeScript#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.3.4"
+  }
+}
