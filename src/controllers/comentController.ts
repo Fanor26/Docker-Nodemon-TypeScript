@@ -15,16 +15,43 @@ class ComentController{
         try{
             const comentarioDB = new comentModel(body);
             await comentarioDB.save();
-            res.send(' Comentario insertado correctamente');
+            res.send('Comment inserted successfully');
         }catch(error){
             console.log(error);
         }
         
     }
-    public deleteComent (req : Request, res : Response){
+    public async deleteComent (req : Request, res : Response){
+        const id = req.params.id;
+        console.log(id);
+        try{
+            const comentarioDB = await comentModel.findByIdAndDelete({_id:id});
+            if(comentarioDB){
+                res.send('Comment removed successfully')
+            }else{
+                res.send('Error deleting comment')
+            }
+        }catch (error){
+            console.log(error);
+
+        }
        
     }
-    public updateComent (req : Request, res : Response){
+    public async updateComent (req : Request, res : Response){
+        const id = req.params.id;
+        const body=req.body;
+        try{
+            const comentarioDB = await comentModel.findByIdAndUpdate(id, body);
+            if(comentarioDB){
+                res.send('Comment updated successfully')
+
+            }else{
+                res.send('Error updating Comment')
+            }
+        }catch (error){
+            console.log(error);
+
+        }
        
     }
 
