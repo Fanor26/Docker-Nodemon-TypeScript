@@ -21,7 +21,20 @@ class ComentController{
         }
         
     }
-    public deleteComent (req : Request, res : Response){
+    public async deleteComent (req : Request, res : Response){
+        const id = req.params.id;
+        console.log(id);
+        try{
+            const comentarioDB = await comentModel.findByIdAndDelete({_id:id});
+            if(comentarioDB){
+                res.send('Comment removed successfully')
+            }else{
+                res.send('Error deleting comment')
+            }
+        }catch (error){
+            console.log(error);
+
+        }
        
     }
     public updateComent (req : Request, res : Response){
