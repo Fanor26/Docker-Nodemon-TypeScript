@@ -9,7 +9,16 @@ class ComentController{
             console.log(error);
         }
     }
-    public postComent (req : Request, res : Response){
+    public  async postComent (req : Request, res : Response){
+        const body=req.body;
+        console.log(body);
+        try{
+            const comentarioDB = new comentModel(body);
+            await comentarioDB.save();
+            res.send(' Comentario insertado correctamente');
+        }catch(error){
+            console.log(error);
+        }
         
     }
     public deleteComent (req : Request, res : Response){
