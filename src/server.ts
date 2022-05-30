@@ -6,11 +6,10 @@ const app =  express();
 require('dotenv').config();
 app.set('port', process.env.PORT || 3000);
 
-app.use('/saludos', IndexRoutes)
+app.use('/', IndexRoutes)
 app.use('/comentarios', ComentRoutes)
-app.get('/', (req,res) =>{
-    res.send('Hello World Typescript');
-})
+
+import './database';
 
 app.listen(app.get('port'),()=>{
     console.log(`Server running  in ${app.get('port')}`);
