@@ -58,6 +58,24 @@ class UserContoller{
             })
         }
     }
+    public async deleteUser (req : Request, res : Response){
+        const id = req.params.id;
+        try{
+            const userDB = await UserModel.findByIdAndDelete({_id:id});
+            res.json({
+                error: false,
+                sms: "User deleted successfully"
+            })
+
+        }catch(error){
+            console.log(error)
+            res.json({
+                error: true,
+                sms: "Error deleting User"
+            })
+
+        }
+    }
 }
 
 export const usersController = new UserContoller();
