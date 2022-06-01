@@ -11,5 +11,17 @@ class UserContoller{
             console.log(error)
         }
     }
+    public async postUser(req: Request, res : Response){
+        const body =req.body;
+        try{
+            const userDb = new UserModel(body);
+            await userDb.save()
+            res.send('User inserted successfully')
+
+        }catch(error){
+            console.log(error)
+        }
+    }
 }
+
 export const usersController = new UserContoller();
