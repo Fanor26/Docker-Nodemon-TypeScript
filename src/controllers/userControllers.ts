@@ -39,6 +39,25 @@ class UserContoller{
             })
         }
     }
+    public async putUser(req : Request, res : Response){
+        const id = req.params.id;
+        const body = req.body;
+        try{
+            await UserModel.findByIdAndUpdate(id, body);
+            res.json({
+                error: true,
+                sms: "user updated successfully"
+            })
+
+
+        }catch(error){
+            console.log(error)
+            res.json({
+                error: true,
+                sms: "Error updating user"
+            })
+        }
+    }
 }
 
 export const usersController = new UserContoller();
